@@ -9,4 +9,6 @@ class MarketingType extends Model
 {
     use HasFactory;
     protected $table = 'marketing_types';
+    protected $fillable = ['PostPeremenType', 'TypeMarketing'];
+    public $timestamps = false;
 }

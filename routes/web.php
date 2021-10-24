@@ -27,6 +27,13 @@ Route::get('/marketing/dogovors',[\App\Http\Controllers\MarketingController::cla
 
 route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
     route::group(['namespace'=>'Main'],function(){
-        route::get('/','');
+        route::get('/','IndexController');
+    });
+    route::group(['namespace'=>'Category','prefix'=>'categories'],function(){
+        route::get('/','IndexController')->name('admin.category.index');
+        route::get('/create','CreateController')->name('admin.category.create');
+        route::post('/','StoreController')->name('admin.category.store');
+        route::get('/{category}/edit','EditController')->name('admin.category.edit');
+        route::patch('/{category}','UpdateController')->name('admin.category.update');
     });
 });
