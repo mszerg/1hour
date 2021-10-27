@@ -7,14 +7,13 @@ use App\Http\Requests\Admin\Category\UpdateRequest;
 use App\Models\MarketingType;
 use Illuminate\Http\Request;
 
-class UpdateController extends Controller
+class DeleteController extends Controller
 {
     //
-    public function __invoke(UpdateRequest $request, MarketingType $category)
+    public function __invoke(MarketingType $category)
         {
             // TODO: Implement __invoke() method.
-            $data = $request->validated();
-            $category->update($data);
+            $category->delete();
             /*$categories = MarketingType::all();
             return view('admin.categories.index', compact('categories'));*/
             return redirect()->route('admin.category.index');

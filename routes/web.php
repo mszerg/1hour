@@ -35,5 +35,15 @@ route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
         route::post('/','StoreController')->name('admin.category.store');
         route::get('/{category}/edit','EditController')->name('admin.category.edit');
         route::patch('/{category}','UpdateController')->name('admin.category.update');
+        route::delete('/{category}','DeleteController')->name('admin.category.delete');
+    });
+
+    route::group(['namespace'=>'MarketingDogovor','prefix'=>'marketingdogovors'],function(){
+        route::get('/','IndexController')->name('admin.marketingdogovor.index');
+        route::get('/create','CreateController')->name('admin.marketingdogovor.create');
+        route::post('/','StoreController')->name('admin.marketingdogovor.store');
+        route::get('/{marketingdogovor}/edit','EditController')->name('admin.marketingdogovor.edit');
+        route::patch('/{marketingdogovor}','UpdateController')->name('admin.marketingdogovor.update');
+        route::delete('/{marketingdogovor}','DeleteController')->name('admin.marketingdogovor.delete');
     });
 });
