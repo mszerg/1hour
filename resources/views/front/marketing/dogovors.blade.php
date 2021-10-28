@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('front.layouts.main')
 
 @section('title')Договора Маркетинга@endsection
 

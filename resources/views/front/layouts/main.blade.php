@@ -23,7 +23,7 @@
         </nav>
     </div>
     <div class="container">
-        @yield('main_content')
+        @yield('content')
     </div>
 
 </body>

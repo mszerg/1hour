@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('front.layouts.main')
 @section('main_content')
     {!! grid_view([
         'dataProvider' => $dataProvider,

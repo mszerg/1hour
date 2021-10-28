@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('front.layouts.main')
 
 @section('title')Главная Страница@endsection
 
-@section('main_content')
+@section('content')
     <h1>CFO</h1>
     @foreach($reviews as $el)
         <div class = "alert alert-warning">
