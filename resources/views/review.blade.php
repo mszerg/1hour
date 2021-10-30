@@ -2,7 +2,7 @@
 
 @section('title')Отзывы@endsection
 
-@section('main_content')
+@section('content')
     <h1>Форма добавлени отзыва</h1>
     @if($errors->any())
     <div class="alert alert-danger">

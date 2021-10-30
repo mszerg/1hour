@@ -11,7 +11,7 @@ class CreateController extends Controller
     public function __invoke()
         {
             // TODO: Implement __invoke() method.
-            return view('admin.marketingdogovor.create');
-            dd(111111);
+            return view('front.marketingdogovor.create');
+            //dd(111111);
         }
 }

@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 </head>
 <body>
     <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
@@ -26,5 +27,26 @@
         @yield('content')
     </div>
 
+    <!-- jQuery -->
+    <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ]
+            });
+        });
+    </script>
 </body>
 </html>

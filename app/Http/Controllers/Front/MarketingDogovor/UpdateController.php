@@ -17,7 +17,7 @@ class UpdateController extends Controller
             $category->update($data);
             /*$categories = MarketingType::all();
             return view('admin.categories.index', compact('categories'));*/
-            return redirect()->route('admin.marketingdogovor.index');
+            return redirect()->route('front.marketingdogovor.index');
             //dd(111111);
         }
 }

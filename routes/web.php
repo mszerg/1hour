@@ -46,7 +46,7 @@ route::group(['namespace'=>'Front'],function(){
     route::group(['namespace'=>'MarketingDogovor','prefix'=>'marketingdogovors'],function(){
         route::get('/','IndexController')->name('front.marketingdogovor.index');
         route::get('/create','CreateController')->name('front.marketingdogovor.create');
-        route::post('/','StoreController')->name('admin.marketingdogovor.store');
+        route::post('/','StoreController')->name('front.marketingdogovor.store');
         route::get('/{marketingdogovor}/edit','EditController')->name('front.marketingdogovor.edit');
         route::patch('/{marketingdogovor}','UpdateController')->name('front.marketingdogovor.update');
         route::delete('/{marketingdogovor}','DeleteController')->name('front.marketingdogovor.delete');

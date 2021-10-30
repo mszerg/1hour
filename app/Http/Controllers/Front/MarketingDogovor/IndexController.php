@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\Front\MarketingDogovor;
 
 use App\Http\Controllers\Controller;
-use App\Models\MarketingType;
-use Illuminate\Http\Request;
+use App\Models\MarketingDogovor;
 
 class IndexController extends Controller
 {
     //
     public function __invoke()
         {
-            $marketingdogovor= MarketingType::all();
-            return view('admin.marketingdogovor.index',compact('marketingdogovor'));
+            $marketingdogovors= MarketingDogovor::all();
+            return view('front.marketingdogovor.index',compact('marketingdogovors'));
             //dd(111111);
         }
 }
