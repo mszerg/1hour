@@ -15,7 +15,10 @@ class AddColumnDogovorTextToMarketingDogovorsTable extends Migration
     {
         Schema::table('marketing_dogovors', function (Blueprint $table) {
 
-            $table->text('Dogovor_text');
+            $table->text('Dogovor_text')->nullable();
+            $table->boolean('Active')->nullable()->change();
+            $table->string('Scancopy')->nullable();
+
 
         });
     }
@@ -30,6 +33,8 @@ class AddColumnDogovorTextToMarketingDogovorsTable extends Migration
         Schema::table('marketing_dogovors', function (Blueprint $table) {
             //
             $table->dropColumn('Dogovor_text');
+            $table->dropColumn('Scancopy');
+            $table->boolean('Active')->change();
         });
     }
 }

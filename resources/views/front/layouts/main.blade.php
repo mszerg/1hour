@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 </head>
@@ -33,6 +35,9 @@
     <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
@@ -48,5 +53,12 @@
             });
         });
     </script>
+
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+
 </body>
 </html>

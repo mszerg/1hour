@@ -38,6 +38,7 @@
                                         <th>ID</th>
                                         <th>Номер Договора</th>
                                         <th>ОКПО Контрагента</th>
+                                        <th>Контрагент</th>
                                         <th>Дата начала договора</th>
                                         <th>Дата конца договора</th>
                                         <th>Договор закрыт</th>
@@ -51,6 +52,7 @@
                                             <td>{{ $marketingdogovor->id }}</td>
                                             <td>{{ $marketingdogovor->NumDogovor }}</td>
                                             <td>{{ $marketingdogovor->OKPO_post }}</td>
+                                            <td>{{ $marketingdogovor->Name_post }}</td>
                                             <td>{{ $marketingdogovor->DB_dogovor }}</td>
                                             <td>{{ $marketingdogovor->DE_dogovor }}</td>
                                             <td>{{ $marketingdogovor->Active }}</td>

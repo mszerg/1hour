@@ -24,8 +24,14 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'PostPeremenType'=>'required|string',
-            'TypeMarketing'=>'required|string'
+            'NumDogovor'=>'string|nullable',
+            'OKPO_post'=>'required|string',
+            'Name_post'=>'required|string',
+            'DB_dogovor'=>'date',
+            'DE_dogovor'=>'date|nullable',
+            'Active'=>'',
+            'Dogovor_text'=>'string|nullable',
+            'Scancopy'=>'file'
         ];
     }
 }

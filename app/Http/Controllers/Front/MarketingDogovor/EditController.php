@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\MarketingDogovor;
 
 use App\Http\Controllers\Controller;
-use App\Models\MarketingType;
+use App\Models\MarketingDogovor;
 
 
 class EditController extends Controller

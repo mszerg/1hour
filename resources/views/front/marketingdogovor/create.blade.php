@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-12">
                     Добавление договора маркетинга
-                    <form action="{{ route('front.marketingdogovor.store') }}" method="POST">
+                    <form action="{{ route('front.marketingdogovor.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @if($errors->any())
                             <div class="alert alert-danger">
@@ -40,28 +40,45 @@
                         @endif
                         <div class="form-group w-25">
                             <label>Номер Договора</label>
-                            <input type="text" class="form-control" name="NumDogovor" placeholder="Номер Договора">
+                            <input type="text" class="form-control" name="NumDogovor" placeholder="Номер Договора" value="{{ old('NumDogovor') }}">
                             <label>Окпо контрагента</label>
-                            <input type="text" class="form-control" name="OKPO_post" placeholder="Окпо контрагента">
+                            <input type="text" class="form-control" name="OKPO_post" placeholder="Окпо контрагента" value="{{ old('OKPO_post')}}">
                             {{-- @error('OKPO_post')
                                 <div class="text-danger">Это поле обязательно для заполнения</div>
                             @enderror --}}
                             <label>Наименование контрагента</label>
-                            <input type="text" class="form-control" name="Name_post" placeholder="Наименование контрагента">
+                            <input type="text" class="form-control" name="Name_post" placeholder="Наименование контрагента" value="{{ old('Name_post')}}">
                             {{-- @error('Name_post')
                             <div class="text-danger">Это поле обязательно для заполнения</div>
                             @enderror --}}
                             <label>Дата начала договора</label>
-                            <input type="text" class="form-control" name="DB_dogovor" placeholder="Дата начала договора">
+                            <input type="text" class="form-control" name="DB_dogovor" placeholder="Дата начала договора" value="{{ old('DB_dogovor')}}">
                             <label>Дата окончания договора</label>
-                            <input type="text" class="form-control" name="DE_dogovor" placeholder="Дата окончания договора">
-                            </div>
+                            <input type="text" class="form-control" name="DE_dogovor" placeholder="Дата окончания договора" value="{{ old('DE_dogovor')}}">
+                        </div>
+                        <div>
                             <div class="form-group">
-                                <textarea id="summernote" name="Dogovor_text"></textarea>
+                                <textarea id="summernote" name="Dogovor_text">
+                                    {{ old('Dogovor_text')}}
+                                </textarea>
                             </div>
                             <br class="form-group">
                             <label>Договор закрыт</label>
-                            <input type="checkbox" name="Active"> <br>
+                            <input type="checkbox" name="Active" value="1"> <br>
+
+                            <div class="form-group w-50">
+                                <label for="exampleInputFile">Сканкопия договора</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="Scancopy">
+                                        <label class="custom-file-label">Выберите сканкопию</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Загрузка</span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <input type="submit" class="btn btn-primary" value="Добавить">
                         </div>
                     </form>
@@ -69,7 +86,6 @@
             </div>
             <!-- /.row -->
             <!-- Main row -->
-
             <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
     </section>

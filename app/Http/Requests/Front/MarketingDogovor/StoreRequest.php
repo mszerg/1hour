@@ -29,8 +29,10 @@ class StoreRequest extends FormRequest
             'Name_post'=>'required|string',
             'DB_dogovor'=>'date',
             'DE_dogovor'=>'date|nullable',
-            'Active'=>'boolean',
-            'Dogovor_text'=>'string|nullable'
+            'Active'=>'',
+            'Dogovor_text'=>'string|nullable',
+            'Scancopy'=>'file'
+
         ];
     }
 }
