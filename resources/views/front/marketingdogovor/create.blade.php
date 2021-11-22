@@ -43,14 +43,26 @@
                             <input type="text" class="form-control" name="NumDogovor" placeholder="Номер Договора" value="{{ old('NumDogovor') }}">
                             <label>Окпо контрагента</label>
                             <input type="text" class="form-control" name="OKPO_post" placeholder="Окпо контрагента" value="{{ old('OKPO_post')}}">
-                            {{-- @error('OKPO_post')
-                                <div class="text-danger">Это поле обязательно для заполнения</div>
-                            @enderror --}}
-                            <label>Наименование контрагента</label>
+                            {{-- <label>Наименование контрагента</label>
                             <input type="text" class="form-control" name="Name_post" placeholder="Наименование контрагента" value="{{ old('Name_post')}}">
-                            {{-- @error('Name_post')
-                            <div class="text-danger">Это поле обязательно для заполнения</div>
-                            @enderror --}}
+                            <select class="form-control" name="Name_post">
+                                @foreach($posts as $post)
+                                    <option value="{{ $post->PostNo }}">{{ $post->Name }}</option>
+                                @endforeach
+                            </select> --}}
+
+                            <div class="form-group">
+                                <label>Наименование контрагента</label>
+                                <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="Name_post">
+                                    @foreach($posts as $post)
+                                        <option value="{{ $post->PostNo }}" {{ $post->PostNo==old('Name_post') ? ' selected' : '' }}>
+                                            {{ $post->Name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+
                             <label>Дата начала договора</label>
                             <input type="text" class="form-control" name="DB_dogovor" placeholder="Дата начала договора" value="{{ old('DB_dogovor')}}">
                             <label>Дата окончания договора</label>
@@ -80,6 +92,8 @@
                             </div>
 
                             <input type="submit" class="btn btn-primary" value="Добавить">
+
+
                         </div>
                     </form>
                 </div>

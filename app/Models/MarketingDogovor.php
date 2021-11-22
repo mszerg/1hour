@@ -10,5 +10,8 @@ class MarketingDogovor extends Model
     use HasFactory;
     protected $dateFormat = 'd-m-Y H:i:s';
     protected $table = 'marketing_dogovors';
-    protected $fillable = array('NumDogovor','OKPO_post','Name_post','DB_dogovor','DE_dogovor','Active','Dogovor_text','Scancopy');
+    protected $guarded = []; //разрешаем добавление данных во все поля
+    //protected $fillable = array('NumDogovor','OKPO_post','Name_post','DB_dogovor','DE_dogovor','Active','Dogovor_text','Scancopy');
+
+
 }

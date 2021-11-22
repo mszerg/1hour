@@ -17,7 +17,9 @@ class StoreController extends Controller
             //echo 11111111111111111111111;
             $data = $request->validated();
             //dd($data);
-            $data['Scancopy'] = Storage::put('/scancopy_dogovors',$data['Scancopy']);
+            if (in_array('Scancopy',$data)) {
+                $data['Scancopy'] = Storage::put('/scancopy_dogovors',$data['Scancopy']);
+            }
             //dd($data);
             //return view('admin.categories.create');
             MarketingDogovor::Create($data);

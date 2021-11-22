@@ -12,6 +12,6 @@ class CreateController extends Controller
         {
             // TODO: Implement __invoke() method.
             return view('admin.categories.create');
-            dd(111111);
+            //dd(111111);
         }
 }
