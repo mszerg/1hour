@@ -12,6 +12,7 @@ class MarketingType extends Model
     use SoftDeletes;
     protected $dateFormat = 'd-m-Y H:i:s';
     protected $table = 'marketing_types';
-    protected $fillable = ['PostPeremenType', 'TypeMarketing'];
+    protected $guarded = []; //разрешаем добавление данных во все поля
+    //protected $fillable = ['PostPeremenType', 'TypeMarketing'];
     public $timestamps = false;
 }

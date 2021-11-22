@@ -50,5 +50,11 @@ route::group(['namespace'=>'Front'],function(){
         route::get('/{marketingdogovor}/edit','EditController')->name('front.marketingdogovor.edit');
         route::patch('/{marketingdogovor}','UpdateController')->name('front.marketingdogovor.update');
         route::delete('/{marketingdogovor}','DeleteController')->name('front.marketingdogovor.delete');
+            route::group(['namespace'=>'Podch','prefix'=>'podch'],function(){
+                route::get('/{marketingdogovor}/create','CreateController')->name('front.marketingdogovor.podch.create');
+                route::patch('/{marketingdogovor}','UpdateController')->name('front.marketingdogovor.podch.update');
+                route::post('/{marketingdogovor}','StoreController')->name('front.marketingdogovor.podch.store');
+            });
+
     });
 });
