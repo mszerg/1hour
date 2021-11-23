@@ -15,7 +15,7 @@ class CreateController extends Controller
         {
             // TODO: Implement __invoke() method.
             //dd('222222222');
-            $marketing_dogovor_podches=MarketingDogovorPodch::where('id_marketing_dogovors', '=', $marketingdogovor->id)->get();
+            $marketing_dogovor_podches=MarketingDogovorPodch::where('marketing_dogovors_id', '=', $marketingdogovor->id)->get();
             $marketingtypes = MarketingType::all();
             //$posts = Post::all();
             //dd($marketing_dogovor_podches);

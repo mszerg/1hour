@@ -15,7 +15,10 @@ class AddNewColumnToMarketingDogovorsPodchesTable extends Migration
     {
         Schema::table('marketing_dogovor_podches', function (Blueprint $table) {
             //
-            $table->bigInteger('id_marketing_dogovors');
+            $table->unsignedBigInteger('marketing_dogovors_id');
+            $table->index('marketing_dogovors_id','md_podches_mds_idx');
+            $table->foreign('marketing_dogovors_id','md_podches_mds_fk')->on('marketing_dogovors')->references('id');
+
         });
     }
 
@@ -28,7 +31,9 @@ class AddNewColumnToMarketingDogovorsPodchesTable extends Migration
     {
         Schema::table('marketing_dogovor_podches', function (Blueprint $table) {
             //
-            $table->dropColumn('id_marketing_dogovors');
+            $table->dropIndex('md_podches_mds_idx');
+            $table->dropForeign('md_podches_mds_fk');
+            $table->dropColumn('marketing_dogovors_id');
         });
     }
 }

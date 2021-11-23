@@ -6,3 +6,10 @@ ctrl+D - скопировать строку
 ctrl+shift+ENTER - поставить точку с запятой в конце строки
 ctrl+w - выделение текста
 ctrl+Alt+L - форматирование отступов и пробелов текста
+html:5 + TAB - заготовка html документа
+
+
+
+
+php composer.phar require laravel/ui
+php artisan ui bootstrap
