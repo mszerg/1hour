@@ -45,9 +45,9 @@
                         <div class="form-group w-25">
                             <div class="form-group">
                                 <label>Тип маркетинга</label>
-                                <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="TypeMarketing">
+                                <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="marketing_types_id">
                                     @foreach($marketingtypes as $marketingtype)
-                                        <option value="{{ $marketingtype->id }}" {{ $marketingtype->id==old('Name_post') ? ' selected' : '' }}>
+                                        <option value="{{ $marketingtype->id }}" {{ $marketingtype->id==old('marketing_types_id') ? ' selected' : '' }}>
                                             {{ $marketingtype->TypeMarketing }}
                                         </option>
                                     @endforeach
@@ -62,7 +62,7 @@
                             <label>Менеджер</label>
                             <input type="text" class="form-control" name="FioManager" placeholder="Менеджер" value="{{ old('FioManager')}}">
                             <label>ID договорa маркетинга</label>
-                            <input type="hidden" class="form-control" name="id_marketing_dogovors" value={{ $marketingdogovor->id }}>
+                            <input type="hidden" class="form-control" name="marketing_dogovors_id" value={{ $marketingdogovor->id }}>
 
                             <div>
                                 <input type="submit" class="btn btn-primary" value="Добавить">

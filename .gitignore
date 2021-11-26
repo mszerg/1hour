@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/plugins
 /storage/*.key
 /vendor
 .env
@@ -17,3 +18,4 @@ yarn-error.log
 composer.lock
 composer.phar
 /.git
+

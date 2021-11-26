@@ -24,12 +24,12 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'TypeMarketing'=>'required|int',
-            'Percent'=>'numeric',
-            'SumMarketing'=>'numeric',
-            'Brand'=>'string',
+            'marketing_types_id'=>'required|int',
+            'Percent'=>'numeric|nullable',
+            'SumMarketing'=>'numeric|nullable',
+            'Brand'=>'string|nullable',
             'FioManager'=>'int',
-            'id_marketing_dogovors'=>'required|int'
+            'marketing_dogovors_id'=>'required|int'
         ];
     }
 }

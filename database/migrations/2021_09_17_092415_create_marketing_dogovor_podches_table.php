@@ -15,12 +15,16 @@ class CreateMarketingDogovorPodchesTable extends Migration
     {
         Schema::create('marketing_dogovor_podches', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('TypeMarketing');
-            $table->float('Percent');
-            $table->float('SumMarketing');
-            $table->string('Brand',150);
+            $table->unsignedBigInteger('marketing_types_id');
+            $table->float('Percent')->nullable();
+            $table->float('SumMarketing')->nullable();;
+            $table->string('Brand',150)->nullable();;
             $table->tinyInteger('FioManager');
             $table->timestamps();
+
+            $table->index('marketing_types_id','md_podches_marketing_types_idx');
+            $table->foreign('marketing_types_id','md_podches_marketing_types_fk')->on('marketing_types')->references('id');
+
         });
     }
 
