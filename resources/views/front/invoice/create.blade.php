@@ -25,12 +25,9 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
+                    Создать счет / заявку на маркетинг
 
-
-
-                    Добавление условий договора маркетинга
-
-                    <form action="{{ route('front.marketingdogovor.podch.store',$marketingdogovor->id) }}" method="POST">
+                    <form action="{{ route('front.invoice.store') }}" method="POST">
                         @csrf
                         @if($errors->any())
                             <div class="alert alert-danger">
@@ -45,23 +42,22 @@
                         <div class="form-group w-25">
                             <div class="form-group">
                                 <label>Тип маркетинга</label>
-                                <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="marketing_types_id">
-                                    @foreach($marketingtypes as $marketingtype)
-                                        <option value="{{ $marketingtype->id }}" {{ $marketingtype->id==old('marketing_types_id') ? ' selected' : '' }}>
-                                            {{ $marketingtype->TypeMarketing }}
+                                <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="marketing_dogovors_podches_id">
+                                    @foreach($marketing_dogovor_podches as $marketing_dogovor_podch)
+                                        <option value="{{ $marketing_dogovor_podch->id }}" {{ $marketing_dogovor_podch->id==old('marketing_dogovors_podches_id') ? ' selected' : '' }}>
+                                            {{ $marketing_dogovor_podch->Comment }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
-                            <label>Процент</label>
-                            <input type="text" class="form-control" name="Percent" placeholder="Процент" value="{{ old('Percent')}}">
-                            <label>Фиксированная сумма</label>
-                            <input type="text" class="form-control" name="SumMarketing" placeholder="Фиксированная сумма" value="{{ old('SumMarketing')}}">
-                            <label>Менеджер</label>
-                            <input type="text" class="form-control" name="FioManager" placeholder="Менеджер" value="{{ old('FioManager')}}">
-                            <label>Комментарий</label>
-                            <input type="text" class="form-control" name="Comment" placeholder="Комментарий" value="{{ old('Comment')}}">
-                            <input type="hidden" class="form-control" name="marketing_dogovors_id" value={{ $marketingdogovor->id }}>
+                            <label>Дата</label>
+                            <input type="text" class="form-control" name="DateInvoice" placeholder="Дата счета" value="{{ old('DateInvoice')}}">
+                            <label>База расчета</label>
+                            <input type="text" class="form-control" name="CalculationBase" placeholder="База расчета" value="{{ old('CalculationBase')}}">
+                            <label>Цена</label>
+                            <input type="text" class="form-control" name="Price" placeholder="Цена" value="{{ old('Price')}}">
+                            <label>ИТОГО</label>
+                            <input type="text" class="form-control" name="SumItogo" placeholder="ИТОГО" value="{{ old('SumItogo')}}">
 
                             <div>
                                 <input type="submit" class="btn btn-primary" value="Добавить">

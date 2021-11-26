@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
             'TypeMarketing'=>'required|int',
             'Percent'=>'float',
             'SumMarketing'=>'float',
-            'Brand'=>'string',
+            'Comment'=>'string',
             'FioManager'=>'int',
             'id_marketing_dogovors'=>'required|int'
         ];

@@ -25,7 +25,6 @@ class UpdateRequest extends FormRequest
     {
         return [
             'NumDogovor'=>'string|nullable',
-            'OKPO_post'=>'required|string',
             'Name_post'=>'required|string',
             'DB_dogovor'=>'date',
             'DE_dogovor'=>'date|nullable',

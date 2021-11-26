@@ -12,7 +12,7 @@ class CreateController extends Controller
     public function __invoke()
         {
             // TODO: Implement __invoke() method.
-            $posts = Post::all();
+            $posts = Post::all(); //для выпадающего списка поставщиков
             //dd($posts);
             return view('front.marketingdogovor.create',compact('posts'));
             //dd(111111);

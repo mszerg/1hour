@@ -18,9 +18,13 @@ class CreateMarketingDogovorPodchesTable extends Migration
             $table->unsignedBigInteger('marketing_types_id');
             $table->float('Percent')->nullable();
             $table->float('SumMarketing')->nullable();;
-            $table->string('Brand',150)->nullable();;
             $table->tinyInteger('FioManager');
+            $table->string('Comment')->nullable();;
+            $table->unsignedBigInteger('marketing_dogovors_id');
             $table->timestamps();
+
+            $table->index('marketing_dogovors_id','md_podches_mds_idx');
+            $table->foreign('marketing_dogovors_id','md_podches_mds_fk')->on('marketing_dogovors')->references('id');
 
             $table->index('marketing_types_id','md_podches_marketing_types_idx');
             $table->foreign('marketing_types_id','md_podches_marketing_types_fk')->on('marketing_types')->references('id');

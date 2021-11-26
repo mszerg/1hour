@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Договора Маркетинга</h1>
+                        <h1 class="m-0">Счета</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-1 mb-3">
-                        <a href="{{ route('front.marketingdogovor.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                        <a href="{{ route('front.invoice.create') }}" class="btn btn-block btn-primary">Добавить</a>
                     </div>
                 </div>
                 <div class="row">
@@ -36,29 +36,26 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Номер Договора</th>
-                                        <th>Контрагент</th>
-                                        <th>Дата начала договора</th>
-                                        <th>Дата конца договора</th>
-                                        <th>Договор закрыт</th>
-                                        <th>Текст Договора</th>
+                                        <th>Договор маркет-а</th>
+                                        <th>База расчета</th>
+                                        <th>Цена</th>
+                                        <th>Итого</th>
+
                                         <th colspan="2" class="text-center">Действие</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($marketingdogovors as $marketingdogovor)
+                                    @foreach($invoices as $invoice)
                                         <tr>
-                                            <td>{{ $marketingdogovor->id }}</td>
-                                            <td>{{ $marketingdogovor->NumDogovor }}</td>
-                                            <td>{{ $marketingdogovor->Name_post }}</td>
-                                            <td>{{ $marketingdogovor->DB_dogovor }}</td>
-                                            <td>{{ $marketingdogovor->DE_dogovor }}</td>
-                                            <td>{{ $marketingdogovor->Active }}</td>
-                                            <td>{{ $marketingdogovor->Dogovor_text }}</td>
-                                            <td><a href="{{ route('front.marketingdogovor.edit',$marketingdogovor->id) }}"><i
+                                            <td>{{ $invoice->id }}</td>
+                                            <td>{{ $invoice->marketing_dogovors_podches_id }}</td>
+                                            <td>{{ $invoice->CalculationBase }}</td>
+                                            <td>{{ $invoice->Price }}</td>
+                                            <td>{{ $invoice->SumItogo }}</td>
+                                            <td><a href="{{ route('front.invoice.edit',$invoice->id) }}"><i
                                                         class="fas fa-pencil-alt"></i></a></td>
                                             <td>
-                                                <form action="{{ route('front.marketingdogovor.delete',$marketingdogovor->id) }}"
+                                                <form action="{{ route('front.invoice.delete',$invoice->id) }}"
                                                       method="POST">
                                                     @csrf
                                                     @method('DELETE')

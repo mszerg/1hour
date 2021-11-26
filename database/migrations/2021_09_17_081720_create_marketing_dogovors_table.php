@@ -16,11 +16,12 @@ class CreateMarketingDogovorsTable extends Migration
         Schema::create('marketing_dogovors', function (Blueprint $table) {
             $table->id();
             $table->string('NumDogovor',100);
-            $table->string('OKPO_post',100);
             $table->string('Name_post');
             $table->date('DB_dogovor');
             $table->date('DE_dogovor');
-            $table->boolean('Active');
+            $table->text('Dogovor_text')->nullable();
+            $table->string('Scancopy')->nullable();
+            $table->boolean('Active')->nullable();
             $table->timestamps();
         });
     }

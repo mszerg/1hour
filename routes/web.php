@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\CFOController;
+use App\Http\Controllers\Front\Invoice\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +57,12 @@ route::group(['namespace'=>'Front'],function(){
                 route::post('/{marketingdogovor}','StoreController')->name('front.marketingdogovor.podch.store');
             });
 
+    });
+    route::group(['namespace'=>'invoice','prefix'=>'invoices'],function(){
+        route::get('/',[InvoiceController::class,'index'])->name('front.invoice.index');
+        route::get('/create',[InvoiceController::class,'create'])->name('front.invoice.create');
+        route::get('/{invoiceidfromroute}/edit',[InvoiceController::class,'edit'])->name('front.invoice.edit');
+        route::delete('/{invoiceidfromroute}',[InvoiceController::class,'delete'])->name('front.invoice.delete');
+        route::post('/',[InvoiceController::class,'store'])->name('front.invoice.store');
     });
 });

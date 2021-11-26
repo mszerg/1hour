@@ -42,8 +42,6 @@
                         <div class="form-group">
                             <label>Номер Договора</label>
                             <input type="text" class="form-control" name="NumDogovor" placeholder="Номер Договора" value="{{ $marketingdogovor->NumDogovor }}">
-                            <label>Окпо контрагента</label>
-                            <input type="text" class="form-control" name="OKPO_post" placeholder="Окпо контрагента" value="{{ $marketingdogovor->OKPO_post }}">
                             <label>Наименование контрагента</label>
                             <input type="text" class="form-control" name="Name_post" placeholder="Наименование контрагента" value="{{ $marketingdogovor->Name_post }}">
                             <label>Дата начала договора</label>
@@ -106,8 +104,8 @@
                                     <th>Тип маркетинга</th>
                                     <th>Процент</th>
                                     <th>Сумма</th>
-                                    <th>Бренд</th>
                                     <th>Менеджер</th>
+                                    <th>Комментарий</th>
                                     <th colspan="2" class="text-center">Действие</th>
                                 </tr>
                                 </thead>
@@ -118,8 +116,8 @@
                                         <td>{{ $marketing_dogovor_podch->TypeMarketing }}</td>
                                         <td>{{ $marketing_dogovor_podch->Percent }}</td>
                                         <td>{{ $marketing_dogovor_podch->SumMarketing }}</td>
-                                        <td>{{ $marketing_dogovor_podch->Brand }}</td>
                                         <td>{{ $marketing_dogovor_podch->FioManager }}</td>
+                                        <td>{{ $marketing_dogovor_podch->Comment }}</td>
                                         <td><a href="{{ route('front.marketingdogovor.edit',$marketingdogovor->id) }}"><i
                                                     class="fas fa-pencil-alt"></i></a></td>
                                         <td>

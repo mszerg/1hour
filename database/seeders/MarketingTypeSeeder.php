@@ -29,7 +29,9 @@ class MarketingTypeSeeder extends Seeder
             ['PostPeremenType' => 'Переменный Маркетинг',
              'TypeMarketing' => 'Ввод позиций'],
             ['PostPeremenType' => 'Переменный Маркетинг',
-             'TypeMarketing' => 'Ротация позиций']
+             'TypeMarketing' => 'Ротация позиций'],
+            ['PostPeremenType' => 'Переменный Маркетинг',
+             'TypeMarketing' => 'Газета']
         ]);
 
     }

@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'marketing_types_id'=>'required|int',
             'Percent'=>'numeric|nullable',
             'SumMarketing'=>'numeric|nullable',
-            'Brand'=>'string|nullable',
+            'Comment'=>'string|nullable',
             'FioManager'=>'int',
             'marketing_dogovors_id'=>'required|int'
         ];

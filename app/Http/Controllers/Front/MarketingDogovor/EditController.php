@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\MarketingDogovor;
 use App\Http\Controllers\Controller;
 use App\Models\MarketingDogovor;
 use App\Models\MarketingDogovorPodch;
+use Illuminate\Support\Facades\DB;
 
 
 class EditController extends Controller
@@ -20,12 +21,15 @@ class EditController extends Controller
             //$podches=MarketingDogovorPodch::where('marketing_dogovors_id', '=', $marketingdogovor->id)->jo;
             //$podches=MarketingDogovorPodch::find(1);
             //$podches = MarketingDogovorPodch::usloviya($marketingdogovor->id);
-            $podches = new MarketingDogovorPodch();
-            $podches->allusloviya();
-            dd($podches);
-            $marketing_dogovor_podches=$podches->usloviya;
+            //$podches = new MarketingDogovorPodch();
+            //$podches->allusloviya();
+
+            $marketing_dogovor_podches = DB::select('select * from marketing_dogovor_podches
+                                                            left join marketing_types on marketing_types.id=marketing_dogovor_podches.marketing_types_id
+                                                            where marketing_dogovors_id = ?', [$marketingdogovor->id]);
+            //$marketing_dogovor_podches=$podches->usloviya;
             //$marketing_dogovor_podches=MarketingDogovorPodch::where('marketing_dogovors_id', '=', $marketingdogovor->id)->get();
-            dd($marketing_dogovor_podches);
+            //dd($marketing_dogovor_podches);
             /*if (!is_array($marketing_dogovor_podches)) {
                 $marketing_dogovor_podches=array(['id'=>1,'TypeMarketing'=>null,'Percent'=>null,'SumMarketing'=>null,'Brand'=>null,'FioManager'=>null]);
             }*/
