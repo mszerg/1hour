@@ -64,5 +64,11 @@ route::group(['namespace'=>'Front'],function(){
         route::get('/{invoiceidfromroute}/edit',[InvoiceController::class,'edit'])->name('front.invoice.edit');
         route::delete('/{invoiceidfromroute}',[InvoiceController::class,'delete'])->name('front.invoice.delete');
         route::post('/',[InvoiceController::class,'store'])->name('front.invoice.store');
+        route::get('/matching',[InvoiceController::class,'matching'])->name('front.invoice.matching');
     });
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

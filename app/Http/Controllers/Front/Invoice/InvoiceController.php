@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Invoice;
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use App\Models\MarketingDogovorPodch;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -23,16 +24,46 @@ class InvoiceController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+    //* @return \Illuminate\Http\Response
+     */
+    public function matching()
+    {
+        //
+        $invoices = Invoice::all();
+        $payments = Payment::select('*')->where([
+                                                    ['DATA_DOC','>=','2021.01.01'],
+                                                    ['DDS','=',7]
+                                                ])->get();
+        //$payments = Payment::first();
+        //dd($payments->toarray());
+        return view('front.invoice.matching', compact('invoices','payments'));
+        //dd($data);
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      *
      //* @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        //usloviya - передается в урл адресе после ?
+        $usloviya=$request->validate([
+            'usloviya'=>'integer',
+            'sum'=>'numeric'
+        ]);
+        //dd($data);
         $marketing_dogovor_podches = MarketingDogovorPodch::all(); //для выпадающего списка маркетинговых условий
+        //dd(intval($usloviya['usloviya']));
+        $marketing_dogovor_usloviya = MarketingDogovorPodch::where('id',intval($usloviya['usloviya']))->get()->toArray(); //договор по номеру из урл
+        //dd($marketing_dogovor_usloviya[0]['Comment']);
+        //dd(111);
         //dd($posts);
-        return view('front.invoice.create',compact('marketing_dogovor_podches'));
+        return view('front.invoice.create',compact('marketing_dogovor_podches','usloviya','marketing_dogovor_usloviya'));
     }
 
     /**
@@ -43,14 +74,13 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Comment
         $data=$request->validate([
             'marketing_dogovors_podches_id'=>'required|int',
             'DateInvoice'=>'date',
             'CalculationBase'=>'',
             'Price'=>'',
             'SumItogo'=>''
-
         ]);
 
         Invoice::create($data);

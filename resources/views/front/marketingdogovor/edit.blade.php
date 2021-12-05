@@ -56,6 +56,8 @@
                                 </textarea>
                             </div>
                             <br class="form-group">
+                            <label>Автопролонгация</label>
+                            <input type="checkbox" name="Active" value="{{ $marketingdogovor->AutoRenewal }}"> <br>
                             <label>Договор закрыт</label>
                             <input type="checkbox" name="Active" value="{{ $marketingdogovor->Active }}"> <br>
 

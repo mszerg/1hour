@@ -40,6 +40,7 @@
                                         <th>Контрагент</th>
                                         <th>Дата начала договора</th>
                                         <th>Дата конца договора</th>
+                                        <th>Автопролонгация</th>
                                         <th>Договор закрыт</th>
                                         <th>Текст Договора</th>
                                         <th colspan="2" class="text-center">Действие</th>
@@ -47,19 +48,22 @@
                                     </thead>
                                     <tbody>
                                     @foreach($marketingdogovors as $marketingdogovor)
-                                        <tr>
+                                        <tr data-widget="expandable-table" aria-expanded="false">
                                             <td>{{ $marketingdogovor->id }}</td>
                                             <td>{{ $marketingdogovor->NumDogovor }}</td>
                                             <td>{{ $marketingdogovor->Name_post }}</td>
                                             <td>{{ $marketingdogovor->DB_dogovor }}</td>
                                             <td>{{ $marketingdogovor->DE_dogovor }}</td>
+                                            <td>{{ $marketingdogovor->AutoRenewal }}</td>
                                             <td>{{ $marketingdogovor->Active }}</td>
                                             <td>{{ $marketingdogovor->Dogovor_text }}</td>
-                                            <td><a href="{{ route('front.marketingdogovor.edit',$marketingdogovor->id) }}"><i
+                                            <td>
+                                                <a href="{{ route('front.marketingdogovor.edit',$marketingdogovor->id) }}"><i
                                                         class="fas fa-pencil-alt"></i></a></td>
                                             <td>
-                                                <form action="{{ route('front.marketingdogovor.delete',$marketingdogovor->id) }}"
-                                                      method="POST">
+                                                <form
+                                                    action="{{ route('front.marketingdogovor.delete',$marketingdogovor->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="border-0 bg-transparent">
@@ -67,7 +71,50 @@
                                                     </button>
                                                 </form>
                                             </td>
-
+                                        </tr>
+                                        <tr class="expandable-body">
+                                            <td style="width:0;">
+                                                <p></p>
+                                            </td>
+                                            <td style="width:0;">
+                                                @foreach($MarketingDogovorPodches->where('marketing_dogovors_id',$marketingdogovor->id) as $MarketingDogovorPodch)
+                                                    <div class="row">{{ $MarketingDogovorPodch->TypeMarketing }}</div>
+                                                @endforeach
+                                            </td>
+                                            <td style="width:0;">
+                                                @foreach($MarketingDogovorPodches->where('marketing_dogovors_id',$marketingdogovor->id) as $MarketingDogovorPodch)
+                                                    <div class="row">
+                                                        @if(is_null($MarketingDogovorPodch->Percent))
+                                                            {{$MarketingDogovorPodch->SumMarketing}}
+                                                        @else
+                                                            {{$MarketingDogovorPodch->Percent}}
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                            </td>
+                                            <td style="width:0;">
+                                                @foreach($MarketingDogovorPodches->where('marketing_dogovors_id',$marketingdogovor->id) as $MarketingDogovorPodch)
+                                                    <div class="row">{{ $MarketingDogovorPodch->FioManager }}</div>
+                                                @endforeach
+                                            </td>
+                                            <td style="width:0;">
+                                                @foreach($MarketingDogovorPodches->where('marketing_dogovors_id',$marketingdogovor->id) as $MarketingDogovorPodch)
+                                                    <div class="row">{{ $MarketingDogovorPodch->Comment }}</div>
+                                                @endforeach
+                                            </td>
+                                            <td style="width:0;">
+                                                @foreach($MarketingDogovorPodches->where('marketing_dogovors_id',$marketingdogovor->id) as $MarketingDogovorPodch)
+                                                    <div class="row">
+                                                        <a href="{{ route('front.invoice.create',
+                                                                      [
+                                                                            'usloviya'=>$MarketingDogovorPodch->id,
+                                                                            'sum'=>(is_null($MarketingDogovorPodch->Percent) ? $MarketingDogovorPodch->SumMarketing : $MarketingDogovorPodch->Percent)
+                                                                      ])
+                                                                  }}">
+                                                            <i class="fas fa-file-invoice-dollar"></i></a>
+                                                    </div>
+                                                @endforeach
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

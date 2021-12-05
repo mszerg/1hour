@@ -24,7 +24,7 @@ class EditController extends Controller
             //$podches = new MarketingDogovorPodch();
             //$podches->allusloviya();
 
-            $marketing_dogovor_podches = DB::select('select * from marketing_dogovor_podches
+            $marketing_dogovor_podches = DB::select('select marketing_dogovor_podches.*,marketing_types.TypeMarketing from marketing_dogovor_podches
                                                             left join marketing_types on marketing_types.id=marketing_dogovor_podches.marketing_types_id
                                                             where marketing_dogovors_id = ?', [$marketingdogovor->id]);
             //$marketing_dogovor_podches=$podches->usloviya;

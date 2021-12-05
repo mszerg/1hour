@@ -72,9 +72,10 @@
                                 </textarea>
                                 </div>
                                 <br class="form-group">
+                                <label>Автопролонгация</label>
+                                <input type="checkbox" name="AutoRenewal" value="1"> <br>
                                 <label>Договор закрыт</label>
                                 <input type="checkbox" name="Active" value="1"> <br>
-
                                 <div class="form-group w-50">
                                     <label for="exampleInputFile">Сканкопия договора</label>
                                     <div class="input-group">

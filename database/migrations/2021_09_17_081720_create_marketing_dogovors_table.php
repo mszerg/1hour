@@ -19,6 +19,8 @@ class CreateMarketingDogovorsTable extends Migration
             $table->string('Name_post');
             $table->date('DB_dogovor');
             $table->date('DE_dogovor');
+            $table->boolean('AutoRenewal')->nullable(); //автопролонгация договора
+            $table->integer('Delay')->nullable(); //отстрочка платежа
             $table->text('Dogovor_text')->nullable();
             $table->string('Scancopy')->nullable();
             $table->boolean('Active')->nullable();
