@@ -41,27 +41,21 @@
                         @endif
                         <div class="form-group w-25">
                             <div class="form-group">
-                                @if(is_null($usloviya))
-                                    <label>Условия из договора</label>
-                                    <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="marketing_dogovors_podches_id">
-                                        @foreach($marketing_dogovor_podches as $marketing_dogovor_podch)
-                                            <option value="{{ $marketing_dogovor_podch->id }}" {{ $marketing_dogovor_podch->id==old('marketing_dogovors_podches_id') ? ' selected' : '' }}>
-                                                {{ $marketing_dogovor_podch->Comment }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                @else
-                                    <label>Условия из договора</label>
-                                    {{ $marketing_dogovor_usloviya[0]['Comment'] }}
-                                    <input type="text" class="form-control hide" name="marketing_dogovors_podches_id" placeholder="Дата счета" value="{{ $marketing_dogovor_usloviya[0]['id'] }}">
-                                @endif
+                                <label>Тип маркетинга</label>
+                                <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="marketing_dogovors_podches_id">
+                                    @foreach($marketing_dogovor_podches as $marketing_dogovor_podch)
+                                        <option value="{{ $marketing_dogovor_podch->id }}" {{ $marketing_dogovor_podch->id==old('marketing_dogovors_podches_id') ? ' selected' : '' }}>
+                                            {{ $marketing_dogovor_podch->Comment }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <label>Дата</label>
                             <input type="text" class="form-control" name="DateInvoice" placeholder="Дата счета" value="{{ old('DateInvoice')}}">
                             <label>База расчета</label>
                             <input type="text" class="form-control" name="CalculationBase" placeholder="База расчета" value="{{ old('CalculationBase')}}">
                             <label>Цена</label>
-                            <input type="text" class="form-control" name="Price" placeholder="Цена" value="{{ $usloviya['sum'] }}">
+                            <input type="text" class="form-control" name="Price" placeholder="Цена" value="{{ old('Price')}}">
                             <label>ИТОГО</label>
                             <input type="text" class="form-control" name="SumItogo" placeholder="ИТОГО" value="{{ old('SumItogo')}}">
 

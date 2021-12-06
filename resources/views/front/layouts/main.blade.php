@@ -26,6 +26,7 @@
 
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         <a class="me-3 py-2 text-dark text-decoration-none" href="/">Главная</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="{{ route('front.marketingdogovor.index') }}">Договора маркетинга</a>
         <a class="me-3 py-2 text-dark text-decoration-none" href="/about">Про нас</a>
         <a class="me-3 py-2 text-dark text-decoration-none" href="/review">Отзывы</a>
     </nav>
