@@ -7,14 +7,14 @@ use App\Http\Requests\Admin\Manager\StoreRequest;
 use App\Models\Manager;
 
 
-class ManagerController extends Controller
+class StoreController extends Controller
 {
-   public function __invoke()
+   public function __invoke(StoreRequest $request)
    {
-       //$data = $request->validated();
+       $data = $request->validated();
        //return $data;
-       $managers = Manager::all();
-       return $managers;
+       $manager = Manager::create($data);
+       return $manager;
        //dd(111111);
    }
 }

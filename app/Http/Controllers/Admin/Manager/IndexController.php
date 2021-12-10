@@ -7,14 +7,14 @@ use App\Http\Requests\Admin\Manager\StoreRequest;
 use App\Models\Manager;
 
 
-class ManagerController extends Controller
+class IndexController extends Controller
 {
    public function __invoke()
    {
        //$data = $request->validated();
        //return $data;
        $managers = Manager::all();
-       return $managers;
+       return view('admin.manager.index',compact('managers'));
        //dd(111111);
    }
 }

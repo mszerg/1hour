@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\CFOController;
 use App\Http\Controllers\Front\Invoice\InvoiceController;
+use App\Http\Controllers\Front\Payment\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ use App\Http\Controllers\Front\Invoice\InvoiceController;
 
 //Route::get('/', 'MainController@home');
 //Route::get('/about', 'MainController@about' );
+
+//namespace - папка в контроллерах
+
 Route::get('/', [CFOController::class,'CFO_list']);
 Route::get('/about',[MainController::class,'about']);
 Route::get('/review',[MainController::class,'review'])->name('review');
@@ -37,6 +41,11 @@ route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
         route::get('/{category}/edit','EditController')->name('admin.category.edit');
         route::patch('/{category}','UpdateController')->name('admin.category.update');
         route::delete('/{category}','DeleteController')->name('admin.category.delete');
+    });
+    Route::group(['namespace'=>'Manager','prefix'=>'manager'],function (){
+        Route::get('/',  'IndexController')->name('admin.manager.index');;
+        Route::get('/create',  'CreateController')->name('admin.manager.create');
+        //Route::get('/store',  'StoreController')->name('admin.manager.store');;
     });
 });
 
@@ -65,6 +74,9 @@ route::group(['namespace'=>'Front'],function(){
         route::delete('/{invoiceidfromroute}',[InvoiceController::class,'delete'])->name('front.invoice.delete');
         route::post('/',[InvoiceController::class,'store'])->name('front.invoice.store');
         route::get('/matching',[InvoiceController::class,'matching'])->name('front.invoice.matching');
+    });
+    route::group(['namespace'=>'Payment','prefix'=>'payments'],function(){
+        route::get('/',[PaymentController::class,'index']);
     });
 });
 

@@ -71,3 +71,10 @@
     </div>
 </div>
 @endsection
+<script>
+    import PostComponent from "../../js/components/PostComponent";
+    import IndexComponent from "../../js/components/manager/IndexComponent";
+    export default {
+        components: {IndexComponent}
+    }
+</script>

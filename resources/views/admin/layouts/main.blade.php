@@ -19,9 +19,11 @@
     <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper" id="app">
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
@@ -40,7 +42,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    {{-- @include('admin.includes.sidebar') --}}
+    @include('admin.includes.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
     @yield('content')

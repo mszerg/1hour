@@ -31,10 +31,12 @@
         <a class="me-3 py-2 text-dark text-decoration-none" href="/review">Отзывы</a>
     </nav>
 </div>
-<div class="container">
+<div class="container" id="app">
     @yield('content')
 </div>
 
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->

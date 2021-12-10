@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Manager\ManagerController;
+use App\Http\Controllers\Admin\Manager\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //namespace - папка в контроллерах
 Route::group(['namespace'=>'Admin','prefix'=>'admin'],function (){
     Route::group(['namespace'=>'Manager','prefix'=>'manager'],function (){
-        Route::post('/', 'ManagerController');
+        Route::get('/',  'ManagerController');
+        Route::post('/store',  'StoreController');
+        Route::patch('/{manager}',  'UpdateController');
+        Route::delete('/{manager}',  'DeleteController');
+
     });
 });

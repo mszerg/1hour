@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Manager\StoreRequest;
+use App\Http\Requests\Admin\Manager\UpdateRequest;
 use App\Models\Manager;
 
 
-class ManagerController extends Controller
+class DeleteController extends Controller
 {
-   public function __invoke()
+   public function __invoke(Manager $manager)
    {
        //$data = $request->validated();
        //return $data;
-       $managers = Manager::all();
-       return $managers;
+       $manager->delete();
+       return response([]);
        //dd(111111);
    }
 }
