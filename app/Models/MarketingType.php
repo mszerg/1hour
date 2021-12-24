@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class MarketingType extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    //use SoftDeletes;
     protected $dateFormat = 'd-m-Y H:i:s';
     protected $table = 'marketing_types';
     protected $guarded = []; //разрешаем добавление данных во все поля

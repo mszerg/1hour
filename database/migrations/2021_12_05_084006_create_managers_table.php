@@ -18,7 +18,7 @@ class CreateManagersTable extends Migration
             $table->string('name');
             $table->unsignedInteger('age');
             $table->string('job');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

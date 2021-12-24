@@ -15,10 +15,10 @@ class CreateMarketingDogovorsTable extends Migration
     {
         Schema::create('marketing_dogovors', function (Blueprint $table) {
             $table->id();
-            $table->string('NumDogovor',100);
+            $table->string('NumDogovor',100)->nullable();;
             $table->string('Name_post');
             $table->date('DB_dogovor');
-            $table->date('DE_dogovor');
+            $table->date('DE_dogovor')->nullable();
             $table->boolean('AutoRenewal')->nullable(); //автопролонгация договора
             $table->integer('Delay')->nullable(); //отстрочка платежа
             $table->text('Dogovor_text')->nullable();

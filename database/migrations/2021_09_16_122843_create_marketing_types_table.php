@@ -19,7 +19,7 @@ class CreateMarketingTypesTable extends Migration
             $table->id();
             $table->string('PostPeremenType');
             $table->string('TypeMarketing');
-            $table->softDeletes();
+            //$table->softDeletes();
             //$table->timestamps();
         });
     }

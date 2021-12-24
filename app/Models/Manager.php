@@ -9,6 +9,8 @@ class Manager extends Model
 {
     use HasFactory;
     protected $table = 'managers';
+    protected $dateFormat = 'd-m-Y H:i:s';
     protected $guarded = false;
+    public $timestamps = false;
 
 }

@@ -10,7 +10,7 @@
         <input type="text" class="form-control" v-model="job" id="job" placeholder="job">
     </div>
     <div class="mb-3">
-        <input @click.prevent="addPersons" class="btn btn-primary" value="Добавить">
+        <a href="#" @click.prevent="addPersons" class="btn btn-success">Добавить</a>
     </div>
 </div>
 </template>
@@ -27,18 +27,18 @@ export default {
     },
     methods: {
       addPersons() {
-          /*console.log(this.name,this.age,this.job)*/
+          //console.log(this.name,this.age,this.job)
           axios.post('/api/admin/manager/store',{name: this.name, age: this.age,job: this.job})
           .then( res =>{
               this.name = null
               this.age = null
               this.job = null
-              console.log(res);
+              //console.log(res);
           })
       }
     },
     mounted() {
-        console.log('CreateComponent mounted.')
+        //console.log('CreateComponent mounted.')
     }
 }
 </script>

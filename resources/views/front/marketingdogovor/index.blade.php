@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('front.layouts.main')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -94,7 +94,7 @@
                                             </td>
                                             <td style="width:0;">
                                                 @foreach($MarketingDogovorPodches->where('marketing_dogovors_id',$marketingdogovor->id) as $MarketingDogovorPodch)
-                                                    <div class="row">{{ $MarketingDogovorPodch->FioManager }}</div>
+                                                    <div class="row">{{ $MarketingDogovorPodch->managers_id }}</div>
                                                 @endforeach
                                             </td>
                                             <td style="width:0;">

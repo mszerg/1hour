@@ -17,10 +17,11 @@ class CFOController extends Controller
         ]);
     }
 
-    public function CFO_list()
+    public function Index()
     {
-        $reviews = new CFO();
+        $reviews = CFO::all();
         //dd($reviews->all());
-        return view('home',['reviews'=>$reviews->all()]);
+        dd($reviews);
+        //return view('home',['reviews'=>$reviews->all()]);
     }
 }

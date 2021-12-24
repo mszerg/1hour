@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class CFO extends Model
 {
     use HasFactory;
-    protected $table = 'CFO';
+    protected $table = 'VCFO';
 }

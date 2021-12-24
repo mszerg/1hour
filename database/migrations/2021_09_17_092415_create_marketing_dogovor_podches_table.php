@@ -17,9 +17,9 @@ class CreateMarketingDogovorPodchesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('marketing_types_id');
             $table->float('Percent')->nullable();
-            $table->float('SumMarketing')->nullable();;
-            $table->tinyInteger('FioManager');
-            $table->string('Comment')->nullable();;
+            $table->float('SumMarketing')->nullable();
+            $table->unsignedTinyInteger('managers_id');
+            $table->string('Comment')->nullable();
             $table->unsignedBigInteger('marketing_dogovors_id');
             $table->timestamps();
 

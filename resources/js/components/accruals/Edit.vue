@@ -1,13 +1,12 @@
 <template>
     <div>
-        <router-link>Payments</router-link>
-        <router-view></router-view>
+        Edit
     </div>
 </template>
 
 <script>
 export default {
-    name: "Index"
+    name: "Edit"
 }
 </script>
 

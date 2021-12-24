@@ -1,4 +1,5 @@
 @extends('front.layouts.main')
 @section('content')
-    <Index></Index>
+    1111111
+    <App></App>
 @endsection

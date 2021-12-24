@@ -29,3 +29,16 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function (){
 
     });
 });
+Route::group(['namespace'=>'Front'],function (){
+    Route::group(['namespace'=>'Accruals','prefix'=>'accruals'],function (){
+        //Route::get('/',  'AccrualsController');
+        Route::post('/store',  'StoreController');
+        Route::get('/',  'IndexController');
+        //Route::patch('/{manager}',  'UpdateController');
+        //Route::delete('/{manager}',  'DeleteController');
+        Route::group(['namespace'=>'Invoice','prefix'=>'invoice'],function (){
+            Route::get('/',  'IndexController');
+            Route::patch('/{invoice}',  'UpdateController');
+        });
+    });
+});

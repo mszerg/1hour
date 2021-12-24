@@ -12,10 +12,10 @@
                 </tr>
             </thead>
             <tbody>
-            <template v-for="manager in managers">
-                <show-component :manager="manager"></show-component>
-                <edite-component :manager="manager" :ref="`edit_${manager.id}`"></edite-component>
-            </template>
+                <template v-for="manager in managers">
+                    <show-component :manager="manager"></show-component>
+                    <edite-component :manager="manager" :ref="`edit_${manager.id}`"></edite-component>
+                </template>
             </tbody>
         </table>
     </div>

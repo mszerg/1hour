@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('front.layouts.main')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -118,7 +118,7 @@
                                         <td>{{ $marketing_dogovor_podch->TypeMarketing }}</td>
                                         <td>{{ $marketing_dogovor_podch->Percent }}</td>
                                         <td>{{ $marketing_dogovor_podch->SumMarketing }}</td>
-                                        <td>{{ $marketing_dogovor_podch->FioManager }}</td>
+                                        <td>{{ $marketing_dogovor_podch->managers_id }}</td>
                                         <td>{{ $marketing_dogovor_podch->Comment }}</td>
                                         <td><a href="{{ route('front.marketingdogovor.edit',$marketingdogovor->id) }}"><i
                                                     class="fas fa-pencil-alt"></i></a></td>

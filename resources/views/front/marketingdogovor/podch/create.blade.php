@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="m-0">Условия по договору маркетинга</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -58,7 +58,7 @@
                             <label>Фиксированная сумма</label>
                             <input type="text" class="form-control" name="SumMarketing" placeholder="Фиксированная сумма" value="{{ old('SumMarketing')}}">
                             <label>Менеджер</label>
-                            <input type="text" class="form-control" name="FioManager" placeholder="Менеджер" value="{{ old('FioManager')}}">
+                            <input type="text" class="form-control" name="managers_id" placeholder="Менеджер" value="{{ old('managers_id')}}">
                             <label>Комментарий</label>
                             <input type="text" class="form-control" name="Comment" placeholder="Комментарий" value="{{ old('Comment')}}">
                             <input type="hidden" class="form-control" name="marketing_dogovors_id" value={{ $marketingdogovor->id }}>

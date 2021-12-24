@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             'Percent'=>'float',
             'SumMarketing'=>'float',
             'Comment'=>'string',
-            'FioManager'=>'int',
+            'managers_id'=>'int',
             'id_marketing_dogovors'=>'required|int'
         ];
     }

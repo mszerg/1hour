@@ -58,6 +58,10 @@
                             <input type="text" class="form-control" name="Price" placeholder="Цена" value="{{ old('Price')}}">
                             <label>ИТОГО</label>
                             <input type="text" class="form-control" name="SumItogo" placeholder="ИТОГО" value="{{ old('SumItogo')}}">
+                            <label>Комментарий</label>
+                            <input type="text" class="form-control" name="Comment" placeholder="Комментарий" value="{{ old('Comment')}}">
+                            <label>Менеджер</label>
+                            <input type="text" class="form-control" name="managers_id" placeholder="Менеджер" value="{{ old('managers_id')}}">
 
                             <div>
                                 <input type="submit" class="btn btn-primary" value="Добавить">

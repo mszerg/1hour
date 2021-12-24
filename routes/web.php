@@ -5,6 +5,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\CFOController;
 use App\Http\Controllers\Front\Invoice\InvoiceController;
 use App\Http\Controllers\Front\Payment\PaymentController;
+use App\Http\Controllers\Front\Accruals\AccrualsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ use App\Http\Controllers\Front\Payment\PaymentController;
 
 //namespace - папка в контроллерах
 
-Route::get('/', [CFOController::class,'CFO_list']);
+Route::get('/cfo', [CFOController::class,'Index']);
 Route::get('/about',[MainController::class,'about']);
 Route::get('/review',[MainController::class,'review'])->name('review');
 Route::post('/review/check',[MainController::class,'review_check']);
@@ -77,6 +78,13 @@ route::group(['namespace'=>'Front'],function(){
     });
     route::group(['namespace'=>'Payment','prefix'=>'payments'],function(){
         route::get('/',[PaymentController::class,'index']);
+
+    });
+    route::group(['namespace'=>'Accruals','prefix'=>'accruals'],function(){
+        route::get('/','AccrualsController')->name('front.accruals.index');;
+        //route::get('/create','CreateController');
+        //route::post('/create','StoreController')->name('front.accruals.store');
+
     });
 });
 

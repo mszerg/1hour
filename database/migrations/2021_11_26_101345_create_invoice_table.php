@@ -20,6 +20,9 @@ class CreateInvoiceTable extends Migration
             $table->float('CalculationBase')->nullable();
             $table->float('Price')->nullable();
             $table->float('SumItogo')->nullable();
+            $table->string('Comment')->nullable();
+            $table->unsignedTinyInteger('managers_id');
+            $table->unsignedBigInteger('import_bank_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

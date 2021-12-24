@@ -12,5 +12,6 @@ class Payment extends Model
     protected $dateFormat = 'd-m-Y H:i:s';
     protected $table = 'IMPORT_BANK';
     protected $guarded = []; //разрешаем добавление данных во все поля
+    public $timestamps = false;
 
 }

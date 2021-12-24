@@ -28,7 +28,7 @@ class StoreRequest extends FormRequest
             'Percent'=>'numeric|nullable',
             'SumMarketing'=>'numeric|nullable',
             'Comment'=>'string|nullable',
-            'FioManager'=>'int',
+            'managers_id'=>'int',
             'marketing_dogovors_id'=>'required|int'
         ];
     }

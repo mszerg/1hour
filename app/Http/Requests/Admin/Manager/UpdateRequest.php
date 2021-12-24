@@ -25,8 +25,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name'=>'required|string',
-            'age'=>'required|integer',
-            'job'=>'required|string',
+            'age'=>'integer',
+            'job'=>'string',
         ];
     }
 }

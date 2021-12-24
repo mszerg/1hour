@@ -80,7 +80,10 @@ class InvoiceController extends Controller
             'DateInvoice'=>'date',
             'CalculationBase'=>'',
             'Price'=>'',
-            'SumItogo'=>''
+            'SumItogo'=>'',
+            'Comment'=>'string',
+            'managers_id'=>'integer',
+
         ]);
 
         Invoice::create($data);
