@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front\Invoice;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
+use App\Models\Manager;
 use App\Models\MarketingDogovorPodch;
 use App\Models\Payment;
 use Illuminate\Http\Request;
@@ -18,9 +19,10 @@ class InvoiceController extends Controller
     public function index()
     {
         //
-        $invoices = Invoice::all();
+        $invoices = Invoice::orderBy('id', 'desc')->get();
+        //dd($invoices);
         return view('front.invoice.index', compact('invoices'));
-        //dd($data);
+
     }
 
     /**
@@ -54,16 +56,24 @@ class InvoiceController extends Controller
         //usloviya - передается в урл адресе после ?
         $usloviya=$request->validate([
             'usloviya'=>'integer',
-            'sum'=>'numeric'
+            'sum'=>'numeric',
+            'comment'=>'string',
+            'manager'=>'integer'
         ]);
         //dd($data);
         $marketing_dogovor_podches = MarketingDogovorPodch::all(); //для выпадающего списка маркетинговых условий
         //dd(intval($usloviya['usloviya']));
         $marketing_dogovor_usloviya = MarketingDogovorPodch::where('id',intval($usloviya['usloviya']))->get()->toArray(); //договор по номеру из урл
         //dd($marketing_dogovor_usloviya[0]['Comment']);
-        //dd(111);
-        //dd($posts);
-        return view('front.invoice.create',compact('marketing_dogovor_podches','usloviya','marketing_dogovor_usloviya'));
+        //dd(compact('usloviya'));
+        //dd($marketing_dogovor_usloviya);
+        //return view('front.invoice.create',compact('marketing_dogovor_podches','usloviya','marketing_dogovor_usloviya'));
+        return view('front.invoice.create')->with([
+            'marketing_dogovor_podches'=>$marketing_dogovor_podches,
+            'usloviya'=>$usloviya,
+            'marketing_dogovor_usloviya'=>$marketing_dogovor_usloviya,
+            'managers'=>Manager::all()
+        ]);
     }
 
     /**
@@ -82,7 +92,7 @@ class InvoiceController extends Controller
             'Price'=>'',
             'SumItogo'=>'',
             'Comment'=>'string',
-            'managers_id'=>'integer',
+            'managers_id'=>'integer|notIn:1',
 
         ]);
 
@@ -116,6 +126,9 @@ class InvoiceController extends Controller
     public function edit(Invoice $invoice)
     {
         //
+        return view('front.invoice.edit')->with([
+            'invoice'=>$invoice
+        ]);
     }
 
     /**
@@ -128,6 +141,18 @@ class InvoiceController extends Controller
     public function update(Request $request, Invoice $invoice)
     {
         //
+        $data=$request->validate([
+            'marketing_dogovors_podches_id'=>'required|int',
+            'DateInvoice'=>'date',
+            'CalculationBase'=>'',
+            'Price'=>'',
+            'SumItogo'=>'',
+            'Comment'=>'string',
+            'managers_id'=>'integer',
+
+        ]);
+        $invoice->update($data);
+        return redirect()->route('front.invoice.index');
     }
 
     /**
@@ -138,6 +163,11 @@ class InvoiceController extends Controller
      */
     public function destroy(Invoice $invoice)
     {
-        //
+        // TODO: Implement __invoke() method.
+        $invoice->delete();
+        /*$categories = MarketingType::all();
+        return view('admin.categories.index', compact('categories'));*/
+        return redirect()->route('front.invoice.index');
+        //dd(111111);
     }
 }

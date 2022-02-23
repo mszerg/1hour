@@ -24,15 +24,48 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-1 mb-3">
+                    <div class="col-1">
                         <a href="{{ route('front.marketingdogovor.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                    </div>
+                    <div class="col-9">
+                        <form action="{{route('front.marketingdogovor.index')}}" method="get">
+                            <div class="row">
+                                <div class="col mb-3 text-right">
+                                    <label>Наименование контрагента</label>
+                                </div>
+                                <div class="col mb-3">
+                                    <select class="form-control select2bs4 select2-hidden-accessible"
+                                            style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true"
+                                            name="Name_post">
+                                        <option></option>
+                                        @foreach($posts as $post)
+                                            <option value="{{$post->PostNo}}" @if(isset($_GET['Name_post'])) @if($_GET['Name_post'] == $post->PostNo) selected @endif @endif>{{$post->Name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col mb-3">
+                                    <input name="search_post" @if(isset($_GET['search_post'])) value="{{$_GET['search_post']}}" @endif type="text" class="form-control" id="search_id" placeholder="Поставщик">
+                                </div>
+                                <div class="col mb-3">
+                                    <button type="submit" class="btn btn-primary">Найти</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-2">
+                        <form action="{{route('front.marketingdogovor.index')}}" method="get">
+                            <div class="col mb-3">
+                                <button type="submit" class="btn btn-primary">Очистить фильтр</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body table-responsive p-0">
-                                <table class="table table-hover text-nowrap">
+                            <div class="card-body table-responsive p-0" style="height: 600px;">
+                                {{--<table class="table table-hover text-nowrap">--}}
+                                <table class="table table-head-fixed text-nowrap">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
@@ -42,7 +75,6 @@
                                         <th>Дата конца договора</th>
                                         <th>Автопролонгация</th>
                                         <th>Договор закрыт</th>
-                                        <th>Текст Договора</th>
                                         <th colspan="2" class="text-center">Действие</th>
                                     </tr>
                                     </thead>
@@ -51,12 +83,11 @@
                                         <tr data-widget="expandable-table" aria-expanded="false">
                                             <td>{{ $marketingdogovor->id }}</td>
                                             <td>{{ $marketingdogovor->NumDogovor }}</td>
-                                            <td>{{ $marketingdogovor->Name_post }}</td>
-                                            <td>{{ $marketingdogovor->DB_dogovor }}</td>
-                                            <td>{{ $marketingdogovor->DE_dogovor }}</td>
+                                            <td>{{ $marketingdogovor->post->Name }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($marketingdogovor->DB_dogovor)->format('d.m.Y') }}</td>
+                                            <td>{{ $marketingdogovor->DE_dogovor ? \Carbon\Carbon::parse($marketingdogovor->DE_dogovor)->format('d.m.Y') : null}}</td>
                                             <td>{{ $marketingdogovor->AutoRenewal }}</td>
                                             <td>{{ $marketingdogovor->Active }}</td>
-                                            <td>{{ $marketingdogovor->Dogovor_text }}</td>
                                             <td>
                                                 <a href="{{ route('front.marketingdogovor.edit',$marketingdogovor->id) }}"><i
                                                         class="fas fa-pencil-alt"></i></a></td>
@@ -84,17 +115,13 @@
                                             <td style="width:0;">
                                                 @foreach($MarketingDogovorPodches->where('marketing_dogovors_id',$marketingdogovor->id) as $MarketingDogovorPodch)
                                                     <div class="row">
-                                                        @if(is_null($MarketingDogovorPodch->Percent))
-                                                            {{$MarketingDogovorPodch->SumMarketing}}
-                                                        @else
-                                                            {{$MarketingDogovorPodch->Percent}}
-                                                        @endif
+                                                            {{number_format($MarketingDogovorPodch->price,2,',',' ')}}
                                                     </div>
                                                 @endforeach
                                             </td>
                                             <td style="width:0;">
                                                 @foreach($MarketingDogovorPodches->where('marketing_dogovors_id',$marketingdogovor->id) as $MarketingDogovorPodch)
-                                                    <div class="row">{{ $MarketingDogovorPodch->managers_id }}</div>
+                                                    <div class="row">{{ $MarketingDogovorPodch->name }}</div>
                                                 @endforeach
                                             </td>
                                             <td style="width:0;">
@@ -108,7 +135,9 @@
                                                         <a href="{{ route('front.invoice.create',
                                                                       [
                                                                             'usloviya'=>$MarketingDogovorPodch->id,
-                                                                            'sum'=>(is_null($MarketingDogovorPodch->Percent) ? $MarketingDogovorPodch->SumMarketing : $MarketingDogovorPodch->Percent)
+                                                                            'sum'=> $MarketingDogovorPodch->price,
+                                                                            'comment'=>$MarketingDogovorPodch->Comment,
+                                                                            'manager'=>$MarketingDogovorPodch->managers_id
                                                                       ])
                                                                   }}">
                                                             <i class="fas fa-file-invoice-dollar"></i></a>

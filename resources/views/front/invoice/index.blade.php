@@ -25,7 +25,7 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-1 mb-3">
-                        <a href="{{ route('front.invoice.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                        <a href="{{ route('front.marketingdogovor.index') }}" class="btn btn-block btn-primary">Добавить</a>
                     </div>
                 </div>
                 <div class="row">
@@ -36,10 +36,14 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Договор маркет-а</th>
+                                        <th>№ условия мар-а</th>
+                                        <th>Дата счета</th>
+                                        <th>Контрагент</th>
                                         <th>База расчета</th>
                                         <th>Цена</th>
                                         <th>Итого</th>
+                                        <th>Комментарий</th>
+                                        <th>Менеджер</th>
 
                                         <th colspan="2" class="text-center">Действие</th>
                                     </tr>
@@ -49,9 +53,15 @@
                                         <tr>
                                             <td>{{ $invoice->id }}</td>
                                             <td>{{ $invoice->marketing_dogovors_podches_id }}</td>
-                                            <td>{{ $invoice->CalculationBase }}</td>
-                                            <td>{{ $invoice->Price }}</td>
-                                            <td>{{ $invoice->SumItogo }}</td>
+                                            <td>{{ $invoice->DateInvoice }}</td>
+                                            <td><a href="{{ route('front.marketingdogovor.edit',$invoice->mdpodch->marketing_dogovors->id) }}">{{$invoice->mdpodch->marketing_dogovors->post->Name}} </a>
+    </td>
+                                            <td>{{ money_format($invoice->CalculationBase) }}</td>
+                                            <td>{{ number_format($invoice->Price,2,',',' ') }}</td>
+                                            <td>{{ number_format($invoice->SumItogo,2,',',' ')}}</td>
+                                            <td>{{ $invoice->Comment }}</td>
+                                            <td>{{ $invoice->manager->name }}</td>
+
                                             <td><a href="{{ route('front.invoice.edit',$invoice->id) }}"><i
                                                         class="fas fa-pencil-alt"></i></a></td>
                                             <td>

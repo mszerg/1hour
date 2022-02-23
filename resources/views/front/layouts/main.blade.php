@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+    <!-- Bootstrap Date-Picker Plugin -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
@@ -79,10 +81,15 @@
 <!-- bs-custom-file-input -->
 <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 
 <script>
     $(document).ready(function() {
         $('#summernote').summernote({
+            height: 430,
             toolbar: [
                 // [groupName, [list of button]]
                 ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -93,6 +100,16 @@
                 ['height', ['height']]
             ]
         });
+        var date_input=$('input[id="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        var options={
+            format: 'dd.mm.yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+            language: "ru"
+        };
+        date_input.datepicker(options);
     });
 </script>
 
@@ -106,6 +123,33 @@
         theme: 'bootstrap4'
     })
 </script>
+
+<script>
+    $('#edit').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var marketing_types_id = button.data('mymarketing_types_id')
+        var price = button.data('price')
+        var managers_id = button.data('mymanagers_id')
+        var comment = button.data('mycomment')
+        //alert(managers_id)
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #marketing_types_id').val(marketing_types_id);
+        modal.find('.modal-body #price').val(price);
+        modal.find('.modal-body #managers_id').val(managers_id);
+        modal.find('.modal-body #comment').val(comment);
+    })
+
+    $('#delete').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+    })
+</script>
+
+
 
 
 <!-- Измненяеи надписсь на кнопке открытия файла с Browse на ... -->

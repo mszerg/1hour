@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Front\MarketingDogovor\Podch;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Front\MarketingDogovor\Podch\UpdateRequest;
 use App\Models\MarketingDogovorPodch;
+use Illuminate\Http\Request;
 
-class UpdateController extends Controller
+class DeleteController extends Controller
 {
     //
-    public function __invoke(UpdateRequest $request)
+    public function __invoke(Request $request)
         {
             // TODO: Implement __invoke() method.
             //dd($request->all());
@@ -25,7 +25,7 @@ class UpdateController extends Controller
             //dd(111111);
 
             $marketingdogovor_podch=MarketingDogovorPodch::findOrFail($request->id);
-            $marketingdogovor_podch->update($request->validated());
+            $marketingdogovor_podch->delete();
             return back();
 
         }

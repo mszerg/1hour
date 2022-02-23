@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front\MarketingDogovor\Podch;
 
 use App\Http\Controllers\Controller;
+use App\Models\Manager;
 use App\Models\MarketingDogovor;
 use App\Models\MarketingDogovorPodch;
 use App\Models\MarketingType;
@@ -19,7 +20,14 @@ class CreateController extends Controller
             $marketingtypes = MarketingType::all();
             //$posts = Post::all();
             //dd($marketing_dogovor_podches);
-            return view('front.marketingdogovor.podch.create',compact('marketing_dogovor_podches','marketingdogovor','marketingtypes'));
+            //return view('front.marketingdogovor.podch.create',compact('marketing_dogovor_podches','marketingdogovor','marketingtypes'));
+            return view('front.marketingdogovor.podch.create')->with([
+                'marketing_dogovor_podches'=>$marketing_dogovor_podches,
+                'marketingdogovor'=>$marketingdogovor,
+                'marketingtypes'=>$marketingtypes,
+                'managers'=>Manager::all(),
+            ]);
             //dd(111111);
+
         }
 }

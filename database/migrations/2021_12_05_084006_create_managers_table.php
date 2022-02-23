@@ -16,8 +16,8 @@ class CreateManagersTable extends Migration
         Schema::create('managers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedInteger('age');
-            $table->string('job');
+            $table->unsignedInteger('age')->nullable();
+            $table->string('job')->nullable();
             //$table->timestamps();
         });
     }

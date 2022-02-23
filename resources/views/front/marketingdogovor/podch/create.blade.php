@@ -45,7 +45,7 @@
                         <div class="form-group w-25">
                             <div class="form-group">
                                 <label>Тип маркетинга</label>
-                                <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="marketing_types_id">
+                                <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="marketing_types_id" id="marketing_types_id">
                                     @foreach($marketingtypes as $marketingtype)
                                         <option value="{{ $marketingtype->id }}" {{ $marketingtype->id==old('marketing_types_id') ? ' selected' : '' }}>
                                             {{ $marketingtype->TypeMarketing }}
@@ -53,12 +53,16 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <label>Процент</label>
-                            <input type="text" class="form-control" name="Percent" placeholder="Процент" value="{{ old('Percent')}}">
-                            <label>Фиксированная сумма</label>
-                            <input type="text" class="form-control" name="SumMarketing" placeholder="Фиксированная сумма" value="{{ old('SumMarketing')}}">
+                            <label>Цена</label>
+                            <input type="number" step="any" class="form-control" name="price" placeholder="Цена" value="{{ old('price')}}">
                             <label>Менеджер</label>
-                            <input type="text" class="form-control" name="managers_id" placeholder="Менеджер" value="{{ old('managers_id')}}">
+                            <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" name="managers_id" id="managers_id">
+                                @foreach($managers as $manager)
+                                    <option value="{{ $manager->id }}" {{ $manager->id==old('managers_id') ? ' selected' : '' }}>
+                                        {{ $manager->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                             <label>Комментарий</label>
                             <input type="text" class="form-control" name="Comment" placeholder="Комментарий" value="{{ old('Comment')}}">
                             <input type="hidden" class="form-control" name="marketing_dogovors_id" value={{ $marketingdogovor->id }}>

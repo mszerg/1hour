@@ -63,16 +63,18 @@ route::group(['namespace'=>'Front'],function(){
         route::delete('/{marketingdogovor}','DeleteController')->name('front.marketingdogovor.delete');
             route::group(['namespace'=>'Podch','prefix'=>'podch'],function(){
                 route::get('/{marketingdogovor}/create','CreateController')->name('front.marketingdogovor.podch.create');
-                route::patch('/{marketingdogovor}','UpdateController')->name('front.marketingdogovor.podch.update');
+                route::patch('/{marketingdogovorpodch}','UpdateController')->name('front.marketingdogovor.podch.update');
                 route::post('/{marketingdogovor}','StoreController')->name('front.marketingdogovor.podch.store');
+                route::delete('/{marketingdogovorpodch}','DeleteController')->name('front.marketingdogovor.podch.delete');
             });
 
     });
     route::group(['namespace'=>'invoice','prefix'=>'invoices'],function(){
         route::get('/',[InvoiceController::class,'index'])->name('front.invoice.index');
         route::get('/create',[InvoiceController::class,'create'])->name('front.invoice.create');
-        route::get('/{invoiceidfromroute}/edit',[InvoiceController::class,'edit'])->name('front.invoice.edit');
-        route::delete('/{invoiceidfromroute}',[InvoiceController::class,'delete'])->name('front.invoice.delete');
+        route::get('/{invoice}/edit',[InvoiceController::class,'edit'])->name('front.invoice.edit');
+        route::patch('/{invoice}',[InvoiceController::class,'update'])->name('front.invoice.update');
+        route::delete('/{invoice}',[InvoiceController::class,'destroy'])->name('front.invoice.delete');
         route::post('/',[InvoiceController::class,'store'])->name('front.invoice.store');
         route::get('/matching',[InvoiceController::class,'matching'])->name('front.invoice.matching');
     });

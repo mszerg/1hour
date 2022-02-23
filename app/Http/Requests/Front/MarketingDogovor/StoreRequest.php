@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'NumDogovor'=>'string|nullable',
-            'Name_post'=>'required|exists:Post,PostNo',
+            'Name_post'=>'required|exists:Post,PostNo|unique:marketing_dogovors',
             'DB_dogovor'=>'date',
             'DE_dogovor'=>'date|nullable',
             'Active'=>'',

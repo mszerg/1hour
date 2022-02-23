@@ -25,8 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'marketing_types_id'=>'required|int',
-            'Percent'=>'numeric|nullable',
-            'SumMarketing'=>'numeric|nullable',
+            'price'=>'numeric|nullable',
             'Comment'=>'string|nullable',
             'managers_id'=>'int',
             'marketing_dogovors_id'=>'required|int'

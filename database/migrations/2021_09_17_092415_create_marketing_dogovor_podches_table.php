@@ -16,8 +16,7 @@ class CreateMarketingDogovorPodchesTable extends Migration
         Schema::create('marketing_dogovor_podches', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('marketing_types_id');
-            $table->float('Percent')->nullable();
-            $table->float('SumMarketing')->nullable();
+            $table->float('price');
             $table->unsignedTinyInteger('managers_id');
             $table->string('Comment')->nullable();
             $table->unsignedBigInteger('marketing_dogovors_id');

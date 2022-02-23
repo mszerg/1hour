@@ -17,6 +17,16 @@ class MarketingDogovorPodch extends Model
         return $this->hasMany(MarketingType::class,'md_podches_marketing_types_fk','id');
     }*/
 
+    public function LastInvoice()
+    {
+        return $this->belongsTo(Invoice::class,'id','marketing_dogovors_podches_id');
+    }
+
+    public function marketing_dogovors()
+    {
+        return $this->belongsTo(MarketingDogovor::class,'marketing_dogovors_id','id');
+    }
+
     public function usloviya($marketing_dogovors_id)
     {
         //return $this->belongsTo(MarketingType::class,'marketing_types_id','id');

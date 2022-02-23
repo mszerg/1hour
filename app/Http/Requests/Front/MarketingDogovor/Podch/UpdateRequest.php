@@ -24,12 +24,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'TypeMarketing'=>'required|int',
-            'Percent'=>'float',
-            'SumMarketing'=>'float',
+            'marketing_types_id'=>'required|int',
+            'price'=>'numeric',
             'Comment'=>'string',
             'managers_id'=>'int',
-            'id_marketing_dogovors'=>'required|int'
+            //'marketing_dogovors_id'=>'required|int'
         ];
     }
 }
